@@ -131,9 +131,10 @@ void *memset(void *ptr, int value, size_t num){
 }
 
 void bzero(void *s, size_t n){
-    int i = 0;
+    size_t i = 0;
+    unsigned char* str = (unsigned char*)s; //void* should be explicitly cast. 
     while(i < n){
-        (unsigned char)s[i] = 0; // do you have to explicitly cast s[i] to unsigned char or not? No, the s is set with void* datatype,
+        str[i] = 0; // do you have to explicitly cast s[i] to unsigned char or not? No, the s is set with void* datatype,
                                  // therefore the compiler does not know the exact type of the elements in the memory block. 
                                  // difference between bzero and memset is  memset expects an int value that will be cast to unsigned char explicitly, 
                                  // while bzero treats the memory block as a sequence of bytes without the need for an explicit cast since the type of s is void*.
@@ -177,7 +178,7 @@ void *memcpy(void *dest, const void *src, size_t n){
     if(destination > source && source + n > destination){
         i = n;
         while(i > 0){
-            destination[i-1] = source[i-1];i 
+            destination[i-1] = source[i-1];
             i--;
         }
     }
