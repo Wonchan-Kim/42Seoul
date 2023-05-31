@@ -1,0 +1,45 @@
+github error
+
+how to solve
+
+git init
+git add .
+git commit -m "message"
+git remote add origin "github-repo.git"
+git push -u origin master
+
+if the error is caused due to the lack of the master branch
+
+git checkout -b 'master'
+git push origin master
+
+
+Git Push 취소
+
+1.위킹 디렉터리에서 커밋을 취소
+
+// 방법 1.가장 최근의 커밋을 취소 (기본 옵션: --mixed)
+$ git reset HEAD^
+ 
+// Reflog(브랜치와 HEAD가 지난 몇 달 동안에 가리켰었던 커밋) 목록 확인
+$ git reflog 또는 $ git log -g
+ 
+// 방법 2.원하는 시점으로 워킹 디렉터리를 리셋
+$ git reset HEAD@{number} 또는 $ git reset [commit id]
+cs
+
+2.메세지를 입력 후 커밋
+
+// 메시지를 입력 후 커밋
+$ git commit -m "Commit Message"
+cs
+ 
+
+3.원격 저장소에 푸쉬
+
+$ git push origin [branch name] -f
+또는
+$ git push origin +[branch name]
+ 
+// Ex) master branch를 원격 저장소(origin)에 강제로 푸쉬
+$ git push origin +master
